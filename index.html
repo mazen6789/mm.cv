@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mowaffak AlSeh | Senior HSSE Manager — Oil, Gas & EPC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono for technical project codes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QRCode.js for client-side QR Code generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0B0F17',
+                        slateCard: '#131B2E',
+                        slateCardHover: '#18223A',
+                        steelBorder: '#23304C',
+                        safetyAmber: '#F59E0B',
+                        safetyAmberLight: '#FBBF24',
+                        emeraldVerify: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #F8FAFC;
+            background-image: 
+                radial-gradient(circle at 15% 10%, rgba(245, 158, 11, 0.08) 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                linear-gradient(to bottom, rgba(19, 27, 46, 0.3) 1px, transparent 1px),
+                linear-gradient(to right, rgba(19, 27, 46, 0.3) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* Subtle industrial hazard stripe accent */
+        .hazard-border-top {
+            background: repeating-linear-gradient(
+                -45deg,
+                #F59E0B,
+                #F59E0B 10px,
+                #0B0F17 10px,
+                #0B0F17 20px
+            );
+            height: 4px;
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #23304C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F59E0B;
+        }
+
+        /* Print Stylesheet for clean PDF CV Export */
+        @media print {
+            body {
+                background: #FFFFFF !important;
+                color: #0F172A !important;
+                font-size: 11pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-card {
+                background: #FFFFFF !important;
+                border: 1px solid #CBD5E1 !important;
+                box-shadow: none !important;
+                color: #0F172A !important;
+                break-inside: avoid;
+                margin-bottom: 12px !important;
+                padding: 12px !important;
+            }
+            .print-text-dark {
+                color: #0F172A !important;
+            }
+            .print-text-muted {
+                color: #475569 !important;
+            }
+            .print-badge {
+                border: 1px solid #94A3B8 !important;
+                color: #1E293B !important;
+                background: #F8FAFC !important;
+            }
+            .max-w-6xl {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .lg\:grid-cols-12 {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-safetyAmber selection:text-obsidian">
+
+    <!-- Top Hazard Accent Line -->
+    <div class="hazard-border-top sticky top-0 z-50 no-print"></div>
+
+    <!-- Top Executive Utility Bar (No Print) -->
+    <header class="sticky top-1 z-40 backdrop-blur-md bg-obsidian/85 border-b border-steelBorder no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-2.5 h-2.5 rounded-full bg-emeraldVerify animate-pulse"></div>
+                <span class="font-mono text-xs tracking-wider uppercase text-slate-300">
+                    HSSE EXECUTIVE PORTAL <span class="text-safetyAmber hidden sm:inline">// VERIFIED CREDENTIALS</span>
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="openQrModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slateCard hover:bg-slateCardHover text-slate-200 border border-steelBorder transition-all">
+                    <i data-lucide="qr-code" class="w-3.5 h-3.5 text-safetyAmber"></i>
+                    <span>Card QR</span>
+                </button>
+                <button onclick="openConfigModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-safetyAmber/10 hover:bg-safetyAmber/20 text-safetyAmber border border-safetyAmber/30 transition-all">
+                    <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+                    <span>Configure Contact & Export</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+            <!-- LEFT COLUMN: Sticky Executive Business Card & Quick Credentials (5 Cols on Desktop) -->
+            <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-6">
+
+                <!-- Primary Executive Identity Card -->
+                <section class="bg-slateCard border border-steelBorder rounded-2xl p-6 sm:p-7 shadow-2xl relative overflow-hidden print-card">
+                    <!-- Subtle Corner Engineering Accent -->
+                    <div class="absolute top-0 right-0 w-28 h-28 bg-gradient-to-bl from-safetyAmber/15 to-transparent pointer-events-none no-print"></div>
+
+                    <!-- Avatar / Monogram Badge & Status -->
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div class="relative">
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-slate-800 to-obsidian border-2 border-safetyAmber/60 flex items-center justify-center shadow-lg">
+                                <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-mono">MA</span>
+                            </div>
+                            <span title="NEBOSH IGC Certified" class="absolute -bottom-1.5 -right-1.5 bg-emeraldVerify text-obsidian text-[10px] font-bold px-2 py-0.5 rounded-full border-2 border-slateCard flex items-center gap-0.5 shadow">
+                                <i data-lucide="shield-check" class="w-3 h-3"></i> UK IGC
+                            </span>
+                        </div>
+
+                        <div class="flex flex-col items-end text-right">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emeraldVerify/10 text-emeraldVerify border border-emeraldVerify/30 print-badge">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emeraldVerify"></span>
+                                Available for Leadership Roles
+                            </span>
+                            <span id="display-location" class="text-xs text-slate-400 mt-2 flex items-center gap-1 print-text-muted">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-safetyAmber"></i>
+                                <span>Iraq & MENA Region</span>
+                            </span>
+                            <span class="text-[11px] font-mono text-slate-400 mt-0.5 print-text-muted">
+                                Languages: Arabic (Native) • English (C1)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Name & Headline -->
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white print-text-dark">
+                            Mowaffak AlSeh
+                        </h1>
+                        <p id="display-title" class="text-safetyAmber font-semibold text-base sm:text-lg mt-1 print-text-dark">
+                            Senior HSSE Manager | Oil, Gas & EPC Infrastructure
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed print-text-muted">
+                            Chartered-level Health, Safety, Security & Environmental leader directing multi-national workforces across high-risk upstream, midstream pipeline, CPF, and power generation mega-projects.
+                        </p>
+                    </div>
+
+                    <!-- Top Credential Pills -->
+                    <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-steelBorder/80">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-obsidian/90 text-slate-200 border border-steelBorder print-badge">
+                            <i data-lucide="award" class="w-3.5 h-3.5 text-safetyAmber"></i>
+                            NEBOSH IGC (UK, 2009)
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-obsidian/90 text-slate-200 border border-steelBorder print-badge">
+                            <i data-lucide="hard-hat" class="w-3.5 h-3.5 text-safetyAmber"></i>
+                            OSHA 30-Hr
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-obsidian/90 text-slate-200 border border-steelBorder print-badge">
+                            <i data-lucide="languages" class="w-3.5 h-3.5 text-emeraldVerify"></i>
+                            B.A. Accredited Interpreter (C1)
+                        </span>
+                    </div>
+
+                    <!-- 4-Pillar Key Metrics Strip -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5 mt-5">
+                        <div class="bg-obsidian/80 border border-steelBorder rounded-xl p-3 print-badge">
+                            <div class="text-xl sm:text-2xl font-extrabold text-white font-mono print-text-dark">17+<span class="text-safetyAmber text-sm ml-0.5">Yrs</span></div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-0.5 print-text-muted">Total HSE Leadership</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-steelBorder rounded-xl p-3 print-badge">
+                            <div class="text-xl sm:text-2xl font-extrabold text-white font-mono print-text-dark">12+<span class="text-safetyAmber text-sm ml-0.5">Yrs</span></div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-0.5 print-text-muted">Oil, Gas & EPC</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-steelBorder rounded-xl p-3 print-badge">
+                            <div class="text-xl sm:text-2xl font-extrabold text-white font-mono print-text-dark">8+<span class="text-emeraldVerify text-sm ml-0.5">Yrs</span></div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-0.5 print-text-muted">Post-Chartered</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-steelBorder rounded-xl p-3 print-badge">
+                            <div class="text-xl sm:text-2xl font-extrabold text-white font-mono print-text-dark">6.5+<span class="text-safetyAmber text-sm ml-0.5">Yrs</span></div>
+                            <div class="text-[11px] text-slate-400 font-medium uppercase tracking-wider mt-0.5 print-text-muted">Iraq & MENA Projects</div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Action Bar (Above the Fold Mobile Priority) -->
+                    <div class="mt-6 space-y-2.5 no-print">
+                        <button onclick="downloadVCard()" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-safetyAmber to-amber-500 hover:from-safetyAmberLight hover:to-amber-400 text-obsidian font-bold text-sm shadow-lg shadow-safetyAmber/20 flex items-center justify-center gap-2 transition-all transform active:scale-[0.99]">
+                            <i data-lucide="user-plus" class="w-4 h-4 stroke-[2.5]"></i>
+                            <span>Save to Phone Contacts (.vcf)</span>
+                        </button>
+
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="window.print()" class="py-2.5 px-3 rounded-xl bg-obsidian hover:bg-slate-800/80 text-slate-200 border border-steelBorder font-medium text-xs flex items-center justify-center gap-2 transition-all">
+                                <i data-lucide="printer" class="w-4 h-4 text-safetyAmber"></i>
+                                <span>Print / PDF CV</span>
+                            </button>
+                            <button onclick="openQrModal()" class="py-2.5 px-3 rounded-xl bg-obsidian hover:bg-slate-800/80 text-slate-200 border border-steelBorder font-medium text-xs flex items-center justify-center gap-2 transition-all">
+                                <i data-lucide="share-2" class="w-4 h-4 text-emeraldVerify"></i>
+                                <span>Share QR Card</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact Channels Strip -->
+                    <div class="mt-5 pt-5 border-t border-steelBorder">
+                        <div class="flex items-center justify-between mb-2.5">
+                            <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 print-text-muted">Direct Channels</span>
+                            <button onclick="openConfigModal()" class="text-[11px] text-safetyAmber hover:underline flex items-center gap-1 no-print">
+                                <i data-lucide="edit-3" class="w-3 h-3"></i> Edit Details
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-2 text-xs">
+                            <a id="link-phone" href="tel:+9647500000000" class="flex items-center justify-between p-2.5 rounded-lg bg-obsidian/60 hover:bg-obsidian border border-steelBorder/70 text-slate-200 transition-colors print-badge">
+                                <span class="flex items-center gap-2.5">
+                                    <i data-lucide="phone-call" class="w-4 h-4 text-safetyAmber"></i>
+                                    <span class="font-medium">Direct Mobile</span>
+                                </span>
+                                <span id="text-phone" class="font-mono text-slate-300 print-text-dark">+964 750 000 0000</span>
+                            </a>
+
+                            <a id="link-whatsapp" href="https://wa.me/9647500000000" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2.5 rounded-lg bg-obsidian/60 hover:bg-obsidian border border-steelBorder/70 text-slate-200 transition-colors no-print">
+                                <span class="flex items-center gap-2.5">
+                                    <i data-lucide="message-circle" class="w-4 h-4 text-emeraldVerify"></i>
+                                    <span class="font-medium">WhatsApp Direct</span>
+                                </span>
+                                <span id="text-whatsapp" class="font-mono text-emeraldVerify">Message Now →</span>
+                            </a>
+
+                            <a id="link-email" href="mailto:mowaffak.alseh@example.com" class="flex items-center justify-between p-2.5 rounded-lg bg-obsidian/60 hover:bg-obsidian border border-steelBorder/70 text-slate-200 transition-colors print-badge">
+                                <span class="flex items-center gap-2.5">
+                                    <i data-lucide="mail" class="w-4 h-4 text-safetyAmber"></i>
+                                    <span class="font-medium">Email</span>
+                                </span>
+                                <span id="text-email" class="font-mono text-slate-300 truncate max-w-[180px] sm:max-w-[220px] print-text-dark">mowaffak.alseh@example.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Core Leadership Competencies Matrix -->
+                <section class="bg-slateCard border border-steelBorder rounded-2xl p-6 shadow-xl print-card">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <i data-lucide="cpu" class="w-5 h-5 text-safetyAmber"></i>
+                        <h2 class="text-sm font-bold uppercase tracking-wider text-white print-text-dark">Core HSSE Domains</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">Upstream & Midstream O&G</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">Live Pipeline Tie-Ins & Hot Tapping</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">Central Processing Facilities (CPF)</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">SIMOPS & Turnaround / Shutdowns</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">Permit to Work (PTW) Governance</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">HAZID / JSA / Risk Assessment</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">H2S & Confined Space Rescue</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">Combined Cycle Power Plants</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-obsidian border border-steelBorder text-xs text-slate-200 print-badge">TUV Scaffolding & Rigging Inspection</span>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Executive Summary, Project Portfolio & Certifications (7 Cols on Desktop) -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <!-- 1. Executive Summary Card -->
+                <section class="bg-slateCard border border-steelBorder rounded-2xl p-6 sm:p-7 shadow-xl print-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2.5">
+                            <div class="p-2 rounded-lg bg-safetyAmber/10 border border-safetyAmber/30 text-safetyAmber no-print">
+                                <i data-lucide="file-check-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-white print-text-dark">Executive Summary & Mandate</h2>
+                                <p class="text-xs text-slate-400 print-text-muted">Proven HSSE Governance in High-Hazard Energy Environments</p>
+                            </div>
+                        </div>
+                        <span class="font-mono text-xs text-safetyAmber bg-safetyAmber/10 px-2.5 py-1 rounded border border-safetyAmber/20 hidden sm:inline-block print-badge">
+                            ISO 45001 / 14001 ALIGNED
+                        </span>
+                    </div>
+
+                    <div class="space-y-3.5 text-sm text-slate-300 leading-relaxed print-text-dark">
+                        <p>
+                            Over <strong class="text-white font-semibold print-text-dark">17 years of comprehensive HSE leadership</strong> across <strong class="text-white font-semibold print-text-dark">Oil & Gas, Petrochemical, Pipeline EPC, Combined Cycle Power Plants, LNG, Drilling & Completion Rigs, and Greenfield/Brownfield construction</strong> throughout Iraq and the wider MENA region.
+                        </p>
+                        <p>
+                            Proven track record of advising senior project directorates, formulating site-specific HSSE Management Systems, and enforcing client-prescribed safe work practices (including <strong class="text-safetyAmber font-medium print-text-dark">Gazprom, DNO, TAQA, KAR Group, and Al-Furat Petroleum</strong>) across multi-national workforces and high-stakes shutdown, pipeline rectification, and live tie-in operations under stringent conditions.
+                        </p>
+                    </div>
+
+                    <!-- Core Mandate Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5 pt-5 border-t border-steelBorder">
+                        <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/80 print-badge">
+                            <div class="text-xs font-bold text-safetyAmber uppercase tracking-wider mb-1 print-text-dark">Strategic Advisory</div>
+                            <p class="text-xs text-slate-400 print-text-muted">Advising senior management & client representatives on HSSE policy, regulatory legislation, and operational risk mitigation.</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/80 print-badge">
+                            <div class="text-xs font-bold text-emeraldVerify uppercase tracking-wider mb-1 print-text-dark">Field Compliance</div>
+                            <p class="text-xs text-slate-400 print-text-muted">Full-lifecycle supervision of heavy lifting, hot work, deep trenching, radiographic testing (RPT), and H2S zones.</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/80 print-badge">
+                            <div class="text-xs font-bold text-sky-400 uppercase tracking-wider mb-1 print-text-dark">Workforce Culture</div>
+                            <p class="text-xs text-slate-400 print-text-muted">Bilingual (Arabic/English C1) safety inductions, PTW audits, emergency response drills, and subcontractor alignment.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Interactive Major EPC & Oil/Gas Project Timeline -->
+                <section class="bg-slateCard border border-steelBorder rounded-2xl p-6 sm:p-7 shadow-xl print-card">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-2.5">
+                            <div class="p-2 rounded-lg bg-safetyAmber/10 border border-safetyAmber/30 text-safetyAmber no-print">
+                                <i data-lucide="flame" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-white print-text-dark">Major EPC & Oil/Gas Project Track Record</h2>
+                                <p class="text-xs text-slate-400 print-text-muted">100% HSE Project Manager Tenure Across Critical Energy Infrastructure</p>
+                            </div>
+                        </div>
+
+                        <button onclick="openConfigModal()" class="self-start sm:self-auto inline-flex items-center gap-1.5 text-xs font-medium text-safetyAmber hover:text-safetyAmberLight bg-safetyAmber/10 px-3 py-1.5 rounded-lg border border-safetyAmber/30 no-print">
+                            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                            <span>Add 2023–2026 Role</span>
+                        </button>
+                    </div>
+
+                    <!-- Filter Tabs (No Print) -->
+                    <div class="flex flex-wrap gap-2 mb-6 no-print" id="project-filters">
+                        <button onclick="filterProjects('all')" data-filter="all" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-safetyAmber text-obsidian transition-all">
+                            All Projects (<span id="count-all">9</span>)
+                        </button>
+                        <button onclick="filterProjects('pipeline')" data-filter="pipeline" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder transition-all">
+                            Pipeline & Tie-Ins
+                        </button>
+                        <button onclick="filterProjects('cpf')" data-filter="cpf" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder transition-all">
+                            CPF & Wellsite
+                        </button>
+                        <button onclick="filterProjects('power')" data-filter="power" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder transition-all">
+                            Power & Facilities
+                        </button>
+                    </div>
+
+                    <!-- Timeline Container -->
+                    <div id="timeline-container" class="relative pl-6 border-l-2 border-steelBorder space-y-5">
+                        <!-- Dynamically populated by JS from exact CV data -->
+                    </div>
+                </section>
+
+                <!-- 3. Certifications, Licenses & Technical Authorizations Grid -->
+                <section class="bg-slateCard border border-steelBorder rounded-2xl p-6 sm:p-7 shadow-xl print-card">
+                    <div class="flex items-center gap-2.5 mb-6">
+                        <div class="p-2 rounded-lg bg-emeraldVerify/10 border border-emeraldVerify/30 text-emeraldVerify no-print">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-white print-text-dark">Certifications, Licenses & Technical Authorizations</h2>
+                            <p class="text-xs text-slate-400 print-text-muted">Accredited by UK NEBOSH, OSHA, TÜV Middle East, NAJMA & Operators</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Category A: Core Board & Academic -->
+                        <div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-safetyAmber mb-3 flex items-center gap-2 print-text-dark">
+                                <span class="w-2 h-2 rounded-full bg-safetyAmber"></span>
+                                Core Board & Academic Qualifications
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="p-4 rounded-xl bg-obsidian/80 border border-steelBorder flex items-start gap-3 print-badge">
+                                    <i data-lucide="award" class="w-5 h-5 text-safetyAmber shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <div class="text-sm font-bold text-white print-text-dark">NEBOSH International General Certificate (IGC)</div>
+                                        <div class="text-xs text-slate-400 mt-0.5 print-text-muted">Occupational Health & Safety — UK</div>
+                                        <div class="inline-block mt-2 font-mono text-[11px] text-emeraldVerify bg-emeraldVerify/10 px-2 py-0.5 rounded border border-emeraldVerify/20 print-badge">
+                                            Verified • Obtained May 28, 2009
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-obsidian/80 border border-steelBorder flex items-start gap-3 print-badge">
+                                    <i data-lucide="hard-hat" class="w-5 h-5 text-safetyAmber shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <div class="text-sm font-bold text-white print-text-dark">OSHA 30-Hours Industrial & Construction Safety</div>
+                                        <div class="text-xs text-slate-400 mt-0.5 print-text-muted">Occupational Safety & Health Standards</div>
+                                        <div class="inline-block mt-2 font-mono text-[11px] text-emeraldVerify bg-emeraldVerify/10 px-2 py-0.5 rounded border border-emeraldVerify/20 print-badge">
+                                            Verified • Obtained Nov 28, 2008
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-2 p-4 rounded-xl bg-obsidian/80 border border-steelBorder flex items-start gap-3 print-badge">
+                                    <i data-lucide="graduation-cap" class="w-5 h-5 text-sky-400 shrink-0 mt-0.5"></i>
+                                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                        <div>
+                                            <div class="text-sm font-bold text-white print-text-dark">B.A. / Accredited Arabic–English Interpreter</div>
+                                            <div class="text-xs text-slate-400 mt-0.5 print-text-muted">Al Baath University, Homs, Syria (Accredited 2016)</div>
+                                        </div>
+                                        <span class="self-start sm:self-center font-mono text-xs text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded border border-sky-400/20 shrink-0 print-badge">
+                                            CEFR Level: C1 Advanced
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category B: Technical & High-Risk Operations -->
+                        <div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-emeraldVerify mb-3 flex items-center gap-2 print-text-dark">
+                                <span class="w-2 h-2 rounded-full bg-emeraldVerify"></span>
+                                Technical & High-Risk Field Authorizations (TÜV, NAJMA, Al-Furat, Enertech)
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">TÜV Certified Scaffolding Inspector</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">TÜV Rheinland — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-safetyAmber shrink-0">Oct 2010</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">TÜV Safe Rigging & Slinging</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">TÜV Rheinland — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-safetyAmber shrink-0">Jun 2010</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">TÜV Safe Scaffolding Erection & Dismantling</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">TÜV Rheinland — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-emeraldVerify shrink-0">Certified</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Authorised Gas Tester</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">NAJMA Center — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-emeraldVerify shrink-0">Certified</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Confined Space Entry & Technical Rescue</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">NAJMA Center — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-safetyAmber shrink-0">Jan 2009</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Trenching & Excavation Rescue</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">NAJMA Center — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-emeraldVerify shrink-0">Certified</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Radiation Protection & RPT Authorization</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Al-Furat Petroleum Company (AFPC)</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-emeraldVerify shrink-0">Authorized</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">H2S Alive & Breathing Apparatus (B/A Set)</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Enertech Center — Qatar</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-emeraldVerify shrink-0">Certified</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category C: Emergency & Medical Response -->
+                        <div>
+                            <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-3 flex items-center gap-2 print-text-dark">
+                                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                                Emergency, Firefighting & Medical Response
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Industrial Firefighting Course</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Sky Support — Abu Dhabi</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-sky-400 shrink-0">Certified</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Emergency Response Management</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Al-Furat Petroleum Company (AFPC)</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-sky-400 shrink-0">Certified</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">International Medic First Aid Basic</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Abu Dhabi (Jun 2009) & Red Crescent Volunteer</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-safetyAmber shrink-0">Jun 2009</span>
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-obsidian/60 border border-steelBorder/90 flex items-center justify-between gap-2 print-badge">
+                                    <div>
+                                        <div class="text-xs font-semibold text-white print-text-dark">Defensive Driving Type-A Authorization</div>
+                                        <div class="text-[11px] text-slate-400 print-text-muted">Al-Furat Petroleum Company (AFPC)</div>
+                                    </div>
+                                    <span class="font-mono text-[11px] text-sky-400 shrink-0">Type-A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 py-8 border-t border-steelBorder/60 text-center sm:flex sm:items-center sm:justify-between text-xs text-slate-500 no-print">
+        <div>
+            <span class="font-semibold text-slate-300">Mowaffak AlSeh</span> — Senior HSSE Manager | Digital Business Card & Executive CV
+        </div>
+        <div class="mt-2 sm:mt-0 font-mono">
+            Ready for NFC & QR Business Card Deployment
+        </div>
+    </footer>
+
+    <!-- MODAL 1: Live Business Card QR Code Generator -->
+    <div id="qr-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-obsidian/80 backdrop-blur-sm p-4 no-print">
+        <div class="bg-slateCard border border-steelBorder rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeQrModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-lg bg-obsidian border border-steelBorder">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="flex items-center gap-2.5 mb-4">
+                <div class="p-2 rounded-lg bg-safetyAmber/10 border border-safetyAmber/30 text-safetyAmber">
+                    <i data-lucide="qr-code" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">Business Card QR Generator</h3>
+                    <p class="text-xs text-slate-400">Print this QR on Mowaffak's physical business card</p>
+                </div>
+            </div>
+
+            <!-- Mode Switcher: Website URL vs Direct vCard QR -->
+            <div class="grid grid-cols-2 gap-2 p-1 bg-obsidian rounded-xl border border-steelBorder mb-4">
+                <button id="qr-mode-url" onclick="setQrMode('url')" class="py-2 rounded-lg text-xs font-semibold bg-safetyAmber text-obsidian transition-all">
+                    Website URL QR
+                </button>
+                <button id="qr-mode-vcard" onclick="setQrMode('vcard')" class="py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all">
+                    Offline vCard QR
+                </button>
+            </div>
+
+            <div id="qr-url-input-wrap" class="mb-4">
+                <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Target Website URL for Card</label>
+                <input id="qr-custom-url" type="text" oninput="renderQrCode()" class="w-full px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white font-mono focus:outline-none focus:border-safetyAmber" placeholder="https://mowaffak-hse.com">
+            </div>
+
+            <!-- QR Display Box -->
+            <div class="bg-white p-5 rounded-2xl flex flex-col items-center justify-center mx-auto max-w-[240px] shadow-inner">
+                <div id="qrcode-canvas" class="flex items-center justify-center"></div>
+                <div class="text-[11px] font-mono font-bold text-slate-900 mt-3 tracking-wider uppercase">
+                    MOWAFFAK ALSEH • HSSE MGR
+                </div>
+            </div>
+
+            <p id="qr-helper-text" class="text-center text-xs text-slate-400 mt-3">
+                Scans directly to this interactive CV website.
+            </p>
+
+            <div class="mt-5 flex gap-2.5">
+                <button onclick="downloadQrImage()" class="flex-1 py-2.5 px-4 rounded-xl bg-safetyAmber hover:bg-safetyAmberLight text-obsidian font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Download PNG for Printer</span>
+                </button>
+                <button onclick="closeQrModal()" class="py-2.5 px-4 rounded-xl bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder font-medium text-xs">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Card Customizer & Recent Role Adder -->
+    <div id="config-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-obsidian/80 backdrop-blur-sm p-4 overflow-y-auto no-print">
+        <div class="bg-slateCard border border-steelBorder rounded-2xl max-w-lg w-full p-6 shadow-2xl relative my-8">
+            <button onclick="closeConfigModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-lg bg-obsidian border border-steelBorder">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="flex items-center gap-2.5 mb-5">
+                <div class="p-2 rounded-lg bg-safetyAmber/10 border border-safetyAmber/30 text-safetyAmber">
+                    <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">Customize Contact & Add 2023–2026 Role</h3>
+                    <p class="text-xs text-slate-400">Updates the live page, .vcf contact download, and QR code</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Mobile Phone Number</label>
+                        <input id="input-phone" type="text" value="+964 750 000 0000" class="w-full px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white font-mono focus:outline-none focus:border-safetyAmber">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">WhatsApp Number (Digits Only)</label>
+                        <input id="input-whatsapp" type="text" value="9647500000000" class="w-full px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white font-mono focus:outline-none focus:border-safetyAmber">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+                        <input id="input-email" type="email" value="mowaffak.alseh@example.com" class="w-full px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white font-mono focus:outline-none focus:border-safetyAmber">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">Current Base / Location</label>
+                        <input id="input-location" type="text" value="Iraq & MENA Region" class="w-full px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white focus:outline-none focus:border-safetyAmber">
+                    </div>
+                </div>
+
+                <!-- Optional Post-2022 Project Adder -->
+                <div class="pt-4 border-t border-steelBorder">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-safetyAmber">Optional: Add Latest Project (2023–2026)</span>
+                        <span class="text-[11px] text-slate-400">Appends to top of timeline</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <input id="new-proj-period" type="text" placeholder="Period (e.g. Jan 2023 – Present)" class="px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white focus:outline-none focus:border-safetyAmber">
+                        <input id="new-proj-company" type="text" placeholder="Employer (e.g. SALP ME / EPC)" class="px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white focus:outline-none focus:border-safetyAmber">
+                        <input id="new-proj-title" type="text" placeholder="Project Name & Scope" class="sm:col-span-2 px-3 py-2 rounded-lg bg-obsidian border border-steelBorder text-xs text-white focus:outline-none focus:border-safetyAmber">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-end gap-2.5">
+                <button onclick="closeConfigModal()" class="py-2.5 px-4 rounded-xl bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder font-medium text-xs">
+                    Cancel
+                </button>
+                <button onclick="saveConfiguration()" class="py-2.5 px-5 rounded-xl bg-safetyAmber hover:bg-safetyAmberLight text-obsidian font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-safetyAmber/20">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                    <span>Apply Changes</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 bg-emeraldVerify text-obsidian font-bold text-xs px-4 py-3 rounded-xl shadow-2xl">
+        <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+        <span id="toast-msg">Saved successfully!</span>
+    </div>
+
+    <script>
+        // Exact CV Project Data from Mowaffak AlSeh's PDF
+        const projectsData = [
+            {
+                period: "Aug 2022 – Dec 2022",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "Upstream / Pipeline Operator",
+                category: "pipeline",
+                categoryLabel: "Pipeline Integrity",
+                title: "Rectification of Station Piping and Unpiggable Pipeline Defects (Category 1 & 2)",
+                mandate: "Directed high-risk station piping rectification and unpiggable defect remediation. Enforced strict Permit to Work (PTW), cold/hot cutting protocols, and zero-incident compliance."
+            },
+            {
+                period: "Mar 2022 – Aug 2022",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "KAR Group (CPS1-Refinery)",
+                category: "pipeline",
+                categoryLabel: "Trunkline Repair",
+                title: "KAR-KHUR-2022-CO-83 — Repairing of Defective 20\" Oil Pipeline (CPS1-Refinery)",
+                mandate: "Oversaw full HSSE governance for 20-inch crude oil trunkline defect repair between CPS1 and Refinery, managing excavation safety, gas testing, and hot work controls."
+            },
+            {
+                period: "Jul 2021 – Dec 2021",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "Jambour Field Operations",
+                category: "pipeline",
+                categoryLabel: "EPCC & Live Tie-In",
+                title: "EPCC for Rerouting Existing Section of Jambour Pipeline, New Section Construction & Tie-In",
+                mandate: "Led HSSE execution across greenfield right-of-way construction and brownfield live tie-in operations on the Jambour pipeline corridor."
+            },
+            {
+                period: "Sep 2020 – Jun 2021",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "Upstream Field Operator",
+                category: "cpf",
+                categoryLabel: "Flowline & Wellhead",
+                title: "EPCC for Flowline Construction (S-4 to S-1), Block Valve Installation at S-1 & Wellhead Interconnecting",
+                mandate: "Managed site safety strategy for flowline construction, high-pressure block valve installation, and wellhead mechanical/piping interconnection."
+            },
+            {
+                period: "Jul 2019 – Apr 2020",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "DNO (Tawke Field)",
+                category: "cpf",
+                categoryLabel: "Brownfield CPF",
+                title: "TAK Provision of Civil, Piping & Mechanical Construction for Tawke Coalescer De-Bottlenecking",
+                mandate: "Enforced DNO safety standards during brownfield civil, piping, and mechanical de-bottlenecking inside an active Central Processing Facility."
+            },
+            {
+                period: "Feb 2019 – Jun 2019",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "Gazprom Neft (Garmian Block, Iraq)",
+                category: "cpf",
+                categoryLabel: "CPF & Well Tie-In",
+                title: "Engineering, Procurement & Construction (EPC) of Sarqala-3 Well Connection to CPF at Sarqala-1, Iraq",
+                mandate: "Assured compliance with Gazprom HSSE codes across EPC activities linking Sarqala-3 wellsite to the Central Processing Facility at Sarqala-1."
+            },
+            {
+                period: "Mar 2018 – Jan 2019",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "Gazprom Neft (Iraq)",
+                category: "cpf",
+                categoryLabel: "Production Upgrade",
+                title: "Sarqala-1 Wellsite Production Facilities Upgrade Project — Iraq",
+                mandate: "Formulated and executed SIMOPS safety plans for brownfield production facility upgrades under stringent sour gas / H2S protocols."
+            },
+            {
+                period: "May 2016 – Dec 2017",
+                role: "HSE Project Manager",
+                employer: "SALP ME",
+                client: "TAQA (Atrush Block, Iraq)",
+                category: "pipeline",
+                categoryLabel: "Export System",
+                title: "TAQA Pipeline Export System Project — Iraq",
+                mandate: "19-month tenure governing multi-national workforce safety, heavy rigging, radiographic testing (RPT), and hydro-testing for the TAQA export pipeline."
+            },
+            {
+                period: "Jan 2011 – Apr 2016",
+                role: "HSE Project Manager",
+                employer: "KTG",
+                client: "Ministry of Electricity / Power Generation",
+                category: "power",
+                categoryLabel: "Combined Cycle Power",
+                title: "Jandar Combined Cycle Power Plant — Syria",
+                mandate: "Over 5 years leading comprehensive site HSSE management for major Combined Cycle Power Plant construction, turbine erection, and commissioning."
+            }
+        ];
+
+        // Contact State
+        let contactState = {
+            name: "Mowaffak AlSeh",
+            title: "Senior HSSE Manager | Oil, Gas & EPC Infrastructure",
+            phone: "+964 750 000 0000",
+            whatsapp: "9647500000000",
+            email: "mowaffak.alseh@example.com",
+            location: "Iraq & MENA Region",
+            url: window.location.href
+        };
+
+        let currentQrMode = 'url';
+
+        // Render Project Timeline
+        function renderProjects(filter = 'all') {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? projectsData 
+                : projectsData.filter(p => p.category === filter);
+
+            document.getElementById('count-all').textContent = projectsData.length;
+
+            filtered.forEach((proj, idx) => {
+                const item = document.createElement('div');
+                item.className = "relative group print-card";
+                item.innerHTML = `
+                    <!-- Timeline Node Dot -->
+                    <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-obsidian border-2 ${idx === 0 ? 'border-safetyAmber ring-4 ring-safetyAmber/20' : 'border-slate-500 group-hover:border-safetyAmber'} transition-all no-print"></div>
+
+                    <div class="p-4 sm:p-5 rounded-xl bg-obsidian/70 hover:bg-obsidian border border-steelBorder/90 group-hover:border-safetyAmber/50 transition-all">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="font-mono text-xs font-semibold text-safetyAmber bg-safetyAmber/10 px-2.5 py-0.5 rounded border border-safetyAmber/20 print-badge">
+                                ${proj.period}
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[11px] font-mono text-slate-400 bg-slateCard px-2 py-0.5 rounded border border-steelBorder print-badge">
+                                    ${proj.categoryLabel}
+                                </span>
+                                <span class="text-xs font-bold text-emeraldVerify print-text-dark">
+                                    ${proj.employer}
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-sm sm:text-base font-bold text-white leading-snug print-text-dark">
+                            ${proj.title}
+                        </h3>
+
+                        <div class="text-xs font-medium text-slate-300 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 print-text-muted">
+                            <span>Role: <strong class="text-white print-text-dark">${proj.role}</strong></span>
+                            <span>•</span>
+                            <span>Client / Asset: <strong class="text-slate-200 print-text-dark">${proj.client}</strong></span>
+                        </div>
+
+                        <p class="text-xs text-slate-400 mt-2.5 leading-relaxed print-text-muted">
+                            ${proj.mandate}
+                        </p>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function filterProjects(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = "filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-safetyAmber text-obsidian transition-all";
+                } else {
+                    btn.className = "filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-obsidian hover:bg-slate-800 text-slate-300 border border-steelBorder transition-all";
+                }
+            });
+            renderProjects(category);
+        }
+
+        // Generate & Download vCard (.vcf) File
+        function getVCardPayload() {
+            return [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                `FN:${contactState.name}`,
+                "N:AlSeh;Mowaffak;;;",
+                "ORG:Senior HSSE Management (Oil, Gas & EPC)",
+                `TITLE:${contactState.title}`,
+                `TEL;TYPE=CELL,VOICE:${contactState.phone}`,
+                `EMAIL;TYPE=PREF,INTERNET:${contactState.email}`,
+                `ADR;TYPE=WORK:;;${contactState.location};;;;`,
+                `URL:${contactState.url}`,
+                "NOTE:Senior HSSE Manager | 17+ Yrs HSE | NEBOSH IGC (UK) | OSHA 30-Hr | Oil, Gas, Pipeline & EPC Infrastructure.",
+                "END:VCARD"
+            ].join("\r\n");
+        }
+
+        function downloadVCard() {
+            const vcardData = getVCardPayload();
+            const blob = new Blob([vcardData], { type: "text/vcard;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "Mowaffak_AlSeh_HSSE_Manager.vcf";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("Contact card (.vcf) downloaded!");
+        }
+
+        // QR Code Modal Logic
+        function openQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            const urlInput = document.getElementById('qr-custom-url');
+            if (!urlInput.value) {
+                urlInput.value = window.location.href;
+            }
+            renderQrCode();
+        }
+
+        function closeQrModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function setQrMode(mode) {
+            currentQrMode = mode;
+            const btnUrl = document.getElementById('qr-mode-url');
+            const btnVcard = document.getElementById('qr-mode-vcard');
+            const urlWrap = document.getElementById('qr-url-input-wrap');
+            const helper = document.getElementById('qr-helper-text');
+
+            if (mode === 'url') {
+                btnUrl.className = "py-2 rounded-lg text-xs font-semibold bg-safetyAmber text-obsidian transition-all";
+                btnVcard.className = "py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all";
+                urlWrap.classList.remove('hidden');
+                helper.textContent = "Scans directly to this interactive CV website.";
+            } else {
+                btnVcard.className = "py-2 rounded-lg text-xs font-semibold bg-safetyAmber text-obsidian transition-all";
+                btnUrl.className = "py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white transition-all";
+                urlWrap.classList.add('hidden');
+                helper.textContent = "Offline vCard QR: Instantly opens the phone's Add Contact screen even without internet.";
+            }
+            renderQrCode();
+        }
+
+        function renderQrCode() {
+            const container = document.getElementById('qrcode-canvas');
+            container.innerHTML = '';
+            const payload = currentQrMode === 'url'
+                ? (document.getElementById('qr-custom-url').value || window.location.href)
+                : getVCardPayload();
+
+            new QRCode(container, {
+                text: payload,
+                width: 185,
+                height: 185,
+                colorDark: "#0B0F17",
+                colorLight: "#FFFFFF",
+                correctLevel: currentQrMode === 'url' ? QRCode.CorrectLevel.M : QRCode.CorrectLevel.L
+            });
+        }
+
+        function downloadQrImage() {
+            const img = document.querySelector('#qrcode-canvas img') || document.querySelector('#qrcode-canvas canvas');
+            if (!img) return;
+            const src = img.src || img.toDataURL("image/png");
+            const a = document.createElement('a');
+            a.href = src;
+            a.download = "Mowaffak_AlSeh_BusinessCard_QR.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("High-res QR PNG downloaded!");
+        }
+
+        // Configuration Modal Logic
+        function openConfigModal() {
+            const modal = document.getElementById('config-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeConfigModal() {
+            const modal = document.getElementById('config-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function saveConfiguration() {
+            const phone = document.getElementById('input-phone').value.trim();
+            const whatsapp = document.getElementById('input-whatsapp').value.trim().replace(/[^0-9]/g, '');
+            const email = document.getElementById('input-email').value.trim();
+            const location = document.getElementById('input-location').value.trim();
+
+            if (phone) {
+                contactState.phone = phone;
+                document.getElementById('text-phone').textContent = phone;
+                document.getElementById('link-phone').href = `tel:${phone.replace(/\s+/g, '')}`;
+            }
+            if (whatsapp) {
+                contactState.whatsapp = whatsapp;
+                document.getElementById('link-whatsapp').href = `https://wa.me/${whatsapp}`;
+            }
+            if (email) {
+                contactState.email = email;
+                document.getElementById('text-email').textContent = email;
+                document.getElementById('link-email').href = `mailto:${email}`;
+            }
+            if (location) {
+                contactState.location = location;
+                document.getElementById('display-location').innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-safetyAmber"></i><span>${location}</span>`;
+            }
+
+            // Check if a new 2023-2026 role was entered
+            const newPeriod = document.getElementById('new-proj-period').value.trim();
+            const newCompany = document.getElementById('new-proj-company').value.trim();
+            const newTitle = document.getElementById('new-proj-title').value.trim();
+
+            if (newPeriod && newTitle) {
+                projectsData.unshift({
+                    period: newPeriod,
+                    role: "Senior HSSE Manager",
+                    employer: newCompany || "EPC / Operator",
+                    client: "MENA Energy Infrastructure",
+                    category: "pipeline",
+                    categoryLabel: "Recent Mandate",
+                    title: newTitle,
+                    mandate: "Directing strategic and operational HSSE management, enforcing international safety standards and zero-LTI governance."
+                });
+                document.getElementById('new-proj-period').value = '';
+                document.getElementById('new-proj-company').value = '';
+                document.getElementById('new-proj-title').value = '';
+                renderProjects('all');
+            }
+
+            lucide.createIcons();
+            closeConfigModal();
+            showToast("Profile & vCard updated!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        // Initialize on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProjects('all');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
